@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Grid Connect - Components</title>
+        <link rel="stylesheet" href="main.css" />
+        <style type="text/css">
+            above-header-component { display: none; }
+            @media only screen and (min-width: 769px) {
+                above-header-component { display: block; }
+            }
+        </style>
+        <script src="hero-component.js"></script>
+        <script src="notice-component.js"></script>
+        <script src="above-header-component.js"></script>
+        <script src="header-component.js"></script>
+        <script src="header-menu-component.js"></script>
+        <script src="carousel-component.js"></script>
+        <script type="text/javascript">
+            // Example of how to attach to a click from within the web component and doing something
+            // This means you can customize each components button if you have multiples of these on a page
+            window.addEventListener('load', function () {
+                document.getElementsByTagName('hero-component')[0].addEventListener('cta-click', function (e) {
+                    console.log(e.detail.evt);
+                });
+
+                document.getElementsByTagName('notice-component')[0].addEventListener('close-clicked', function (e) {
+                    e.target.remove();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <notice-component>
+            <span slot="text"><strong>Notice Area!</strong> Read about the lorem ipsum dolor sid pulcher <u>right here</u></span>
+        </notice-component>
+
+        <above-header-component></above-header-component>
+
+        <header-component></header-component>
+
+        <header-menu-component></header-menu-component>
+
+        <hero-component>
+            <span slot="text-one">Sample Text One</span>
+            <span slot="subtext-one">Sub sample TEXT one</span>
+            <span slot="text-cta">Call to action</span>
+            <span slot="text-two">SECOND text slot</span>
+            <span slot="text-three">THIRd TeXt SlOt</span>
+        </hero-component>
+
+        <carousel-component></carousel-component>
+    </body>
+</html>
