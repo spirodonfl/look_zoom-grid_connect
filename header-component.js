@@ -17,6 +17,10 @@ class HeaderComponent extends HTMLElement {
         }
         this.shadow.innerHTML = `
 <style type="text/css">
+a {
+    text-decoration: none;
+    color: var(--text-color-dark);
+}
 #header_component {
     padding: 20px 10px;
     display: grid;
@@ -98,15 +102,15 @@ class HeaderComponent extends HTMLElement {
         <input type="text" placeholder="What are you looking for?" /> <img src="images/search-icon.png" />
     </div>
     <div id="hc_my_account">
-        My Account <img src="images/user-circle-1.png" style="vertical-align: middle;" />
+        <a href="#"><strong>My Account</strong> <img src="images/user-circle-1.png" style="vertical-align: middle;" /></a>
     </div>
     <div id="hc_cart_small">
-        <img src="images/shopping-cart-1.png" />
-        ${(this.totalCartItems > 0) ? '<div id="cart_circle"></div>' : ''}
+        <a href="#"><img src="images/shopping-cart-1.png" />
+        ${(this.totalCartItems > 0) ? '<div id="cart_circle"></div>' : ''}</a>
     </div>
     <div id="hc_cart">
-        Cart | ${this.totalCartItems} ${totalCartItemsText}<img src="images/shopping-cart-1.png" />
-        ${(this.totalCartItems > 0) ? '<div id="cart_circle"></div>' : ''}
+        <a href="#"><strong>Cart |</strong> ${this.totalCartItems} ${totalCartItemsText}<img src="images/shopping-cart-1.png" />
+        ${(this.totalCartItems > 0) ? '<div id="cart_circle"></div>' : ''}</a>
     </div>
 </div>
 `;
