@@ -30,6 +30,20 @@ ul {
     margin: 0px;
     padding: 0px;
 }
+ul .slide-menu-item {
+    display: inline-block;
+    font-size: 20px;
+    color: white;
+    margin-right: 20px;
+}
+ul .slide-menu-item.last {
+    margin-right: 0px;
+}
+ul .slide-menu-item.active {
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 3px solid white;
+}
 #carousel_component #carousel_slides .slide_mobile { display: none; }
 @media screen and (max-width: 1024px) {
     #carousel_component #carousel_slides .slide_full { display: none; }
@@ -40,10 +54,10 @@ ul {
     <div id="carousel_title">Your custom engineering & manufacturing partner</div>
     <div id="carousel_menu">
         <ul>
-            <li style="display: inline-block; font-size: 20px; color: white; margin-right: 20px; font-weight: bold; padding-bottom: 5px; border-bottom: 3px solid white;">Moen</li>
-            <li style="display: inline-block; font-size: 20px; color: white; margin-right: 20px;">Rollease Acmeda</li>
-            <li style="display: inline-block; font-size: 20px; color: white; margin-right: 20px;">Shclage</li>
-            <li style="display: inline-block; font-size: 20px; color: white;">Wayne Pumps</li>
+            <li data-slide-id="1" class="slide-menu-item first active">Moen</li>
+            <li data-slide-id="2" class="slide-menu-item">Rollease Acmeda</li>
+            <li data-slide-id="3" class="slide-menu-item">Shclage</li>
+            <li data-slide-id="4" class="slide-menu-item last">Wayne Pumps</li>
         </ul>
     </div>
     <div id="carousel_slides" style="text-align: center; background-color: var(--bg-color-dark); background-image: url(\"images/carousel-slide-1.png\")">
@@ -113,46 +127,42 @@ ul {
 </div>
 `;
         var full_slides = this.shadow.querySelectorAll('.slide_full');
-        for (var i in full_slides) {
-            if (full_slides[i] instanceof HTMLElement) {
-                if (full_slides[i].dataset.slideId === '1') {
-                    full_slides[i].style.display = 'block';
-                } else {
-                    full_slides[i].style.display = 'none';
-                }
-            }
-        }
+        this.hideSlides(full_slides, '1');
         var mobile_slides = this.shadow.querySelectorAll('.slide_mobile');
-        for (var i in mobile_slides) {
-            if (mobile_slides[i] instanceof HTMLElement) {
-                if (mobile_slides[i].dataset.slideId === '1') {
-                    mobile_slides[i].style.display = 'block';
-                } else {
-                    mobile_slides[i].style.display = 'none';
-                }
-            }
-        }
+        this.hideSlides(mobile_slides, '1');
+        var menu_slides = this.shadow.querySelectorAll('.slide-menu-item');
+        this.hideMenuSlides(menu_slides, '1');
+
         var myself = this;
         this.shadow.getElementById('next_button').addEventListener('click', function () {
-            for (var i in full_slides) {
-                if (full_slides[i] instanceof HTMLElement) {
-                    if (full_slides[i].dataset.slideId === '2') {
-                        full_slides[i].style.display = 'block';
-                    } else {
-                        full_slides[i].style.display = 'none';
-                    }
-                }
-            }
-            for (var i in mobile_slides) {
-                if (mobile_slides[i] instanceof HTMLElement) {
-                    if (mobile_slides[i].dataset.slideId === '2') {
-                        mobile_slides[i].style.display = 'block';
-                    } else {
-                        mobile_slides[i].style.display = 'none';
-                    }
-                }
-            }
+            myself.hideSlides(full_slides, '2');
+            myself.hideSlides(mobile_slides, '2');
+            myself.hideMenuSlides(menu_slides, '2');
         });
+    }
+
+    hideMenuSlides(slides, except) {
+        for (var i in slides) {
+            if (slides[i] instanceof HTMLElement) {
+                if (slides[i].dataset.slideId === except) {
+                    slides[i].classList.add('active');
+                } else {
+                    slides[i].classList.remove('active');
+                }
+            }
+        }
+    }
+
+    hideSlides(slides, except) {
+        for (var i in slides) {
+            if (slides[i] instanceof HTMLElement) {
+                if (slides[i].dataset.slideId === except) {
+                    slides[i].style.display = 'block';
+                } else {
+                    slides[i].style.display = 'none';
+                }
+            }
+        }
     }
 
     static get observedAttributes() {
