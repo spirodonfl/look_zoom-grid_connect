@@ -2,6 +2,8 @@ class HeaderComponent extends HTMLElement {
     constructor() {
         super();
         this.shadow = this.attachShadow({ mode: 'closed' });
+
+        this.totalCartItems = 0;
     }
 
     connectedCallback() {
@@ -9,6 +11,10 @@ class HeaderComponent extends HTMLElement {
     }
 
     render() {
+        var totalCartItemsText = 'item';
+        if (this.totalCartItems === 0 || this.totalCartItems >= 2) {
+            totalCartItemsText = 'items';
+        }
         this.shadow.innerHTML = `
 <style type="text/css">
 #header_component {
@@ -50,6 +56,16 @@ class HeaderComponent extends HTMLElement {
     border: 1px solid var(--input-border-color);
     vertical-align: middle;
 }
+#header_component #hc_cart img { vertical-align: middle; }
+#header_component #hc_cart #cart_circle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: green;
+    border-radius: 100%;
+    margin-top: -28px;
+    margin-left: 112px;
+}
 </style>
 <div id="header_component">
     <div id="hc_logo">
@@ -62,19 +78,25 @@ class HeaderComponent extends HTMLElement {
         My Account <img src="images/user-circle-1.png" style="vertical-align: middle;" />
     </div>
     <div id="hc_cart">
-        Cart | 1 item <img src="images/shopping-cart-1.png" style="vertical-align: middle;" />
+        Cart | ${this.totalCartItems} ${totalCartItemsText}<img src="images/shopping-cart-1.png" />
+        ${(this.totalCartItems > 0) ? '<div id="cart_circle"></div>' : ''}
     </div>
 </div>
 `;
     }
 
     static get observedAttributes() {
-        return [];
+        return ["total-cart-items"];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue === newValue) {
             return;
+        }
+
+        if (name === "total-cart-items") {
+            this.totalCartItems = newValue;
+            this.render();
         }
     }
 }

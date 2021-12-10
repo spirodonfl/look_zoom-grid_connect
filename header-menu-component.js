@@ -11,6 +11,11 @@ class HeaderMenuComponent extends HTMLElement {
     render() {
         this.shadow.innerHTML = `
 <style type="text/css">
+a {
+    text-decoration: none;
+    color: var(--text-color-dark);
+}
+a:hover { cursor: pointer; }
 ul {
     list-style-type: none;
     margin: 0px;
@@ -29,6 +34,7 @@ button {
     font-size: calc(var(--header-menu-request-button-text-size) * 1px);
     font-weight: bold;
 }
+button:hover { cursor: pointer; }
 #menu_component {
     padding: 20px;
     display: grid;
@@ -41,21 +47,27 @@ button {
 <div id="menu_component">
     <div id="mc_left">
         <ul>
-            <li>Products <img src="images/menu-arrow-down.png" style="vertical-align: middle;" /></li>
-            <li>Protocols</li>
-            <li>Services</li>
-            <li>Manufacturers <img src="images/menu-arrow-down.png" style="vertical-align: middle;" /></li>
+            <li><a href="#">Products <img src="images/menu-arrow-down.png" style="vertical-align: middle;" /></a></li>
+            <li><a href="#">Protocols</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Manufacturers <img src="images/menu-arrow-down.png" style="vertical-align: middle;" /></a></li>
         </ul>
     </div>
     <div id="mc_right">
         <ul>
-            <li>About us</li>
-            <li>Contact</li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Contact</a></li>
             <li><button id="mcr_request_a_quote">Request a quote</button></li>
         </ul>
     </div>
 </div>
 `;
+
+        var myself = this;
+        this.shadow.querySelector('#mcr_request_a_quote').addEventListener('click', function (e) {
+            var customEvent = new CustomEvent('request-a-quote-clicked', {bubbles: true, composed: true, detail: { evt: e }});
+            myself.dispatchEvent(customEvent);
+        });
     }
 
     static get observedAttributes() {

@@ -100,6 +100,7 @@ class HeroComponent extends HTMLElement {
         border: 0px;
         border-radius: calc(var(--default-border-radius) * 1px);
     }
+    #hero_component .hc_text button:hover { cursor: pointer; }
 </style>
 <div id="hero_component_wrapper">
     <div id="hero_component">

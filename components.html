@@ -25,6 +25,10 @@
                 document.getElementsByTagName('notice-component')[0].addEventListener('close-clicked', function (e) {
                     e.target.remove();
                 });
+
+                document.getElementsByTagName('header-component')[0].addEventListener('request-a-quote-clicked', function (e) {
+                    console.log(e.detail.evt);
+                });
             });
         </script>
     </head>
