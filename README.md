@@ -4,12 +4,14 @@
 
 ### ToDo List
 
+- When focused on search input, darker highlight has weird border radius
 - Mobile "menu" button needs work
 - Make phone a tel link
 - Responsive design on header
 - Properly vertically center hero text
 - Spacing on mobile menu
 - Horizontal scrolling on mobile menu
+- Horizontal scrolling on carousel slider menu
 - Carousel - get buttons working
 - Carousel - responsive design
 - Carousel - style the "title" class
