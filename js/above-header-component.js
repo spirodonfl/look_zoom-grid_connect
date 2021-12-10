@@ -19,7 +19,11 @@ class AboveHeaderComponent extends HTMLElement {
 #ahc_telephone {
     position: absolute;
     left: 10;
-
+}
+a {
+    text-decoration: none;
+    color: var(--text-color-light);
+    
     display: grid;
     grid-template-columns: 1fr 100px;
     align-items: center;
@@ -38,7 +42,7 @@ class AboveHeaderComponent extends HTMLElement {
 }
 </style>
 <div id="above_header_component">
-    <div id="ahc_telephone"><img src="images/telephone-icon.png" /> (630) 245-1445</div>
+    <div id="ahc_telephone"><a href="tel:6302451445"><img src="images/telephone-icon.png" /> (630) 245-1445</a></div>
     <div id="ahc_text"><span class="secondary_text_color">Free shipping*</span> on orders over $75</div>
 </div>
 `;

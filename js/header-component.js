@@ -76,14 +76,14 @@ a {
     vertical-align: middle;
 }
 #header_component #hc_cart img { vertical-align: middle; }
-#header_component #hc_cart #cart_circle {
+#header_component #hc_cart #cart_circle, #header_component #hc_cart_small #cart_circle {
     position: absolute;
     width: 12px;
     height: 12px;
     background-color: green;
     border-radius: 100%;
     margin-top: -28px;
-    margin-left: 112px;
+    margin-left: 22px;
 }
 
 #hc_cart_small {
