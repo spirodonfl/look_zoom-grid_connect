@@ -1,0 +1,38 @@
+:root {
+    --text-color-dark: #333333;
+    --text-color-light: #FFFFFF;
+    --bg-color-light: #EEEEEE;
+    --bg-color-dark: #333333;
+    --secondary-text-color: #1A9A96;
+    --secondary-bg-color: #1A9A96;
+    --input-border-color: #888888;
+    --input-text-color: #444444;
+    --button-bg-color: #119BE1;
+    --default-border-radius: 4;
+    --default-font-size: 14;
+
+    --hero-image-one: url("images/hero-image-1.png");
+    --hero-image-two: url("images/hero-image-2.png");
+    --hero-image-three: url("images/hero-image-3.png");
+    --hero-layer-one: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"><path fill="rgba(196, 196, 196, 0.2)" d="M0 0h1v1H0z"/></svg>');
+    --hero-layer-two: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"><path fill="rgba(9, 134, 130, 0.6)" d="M0 0h1v1H0z"/></svg>');
+    --hero-layer-three: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"><path fill="rgba(194, 124, 29, 0.6)" d="M0 0h1v1H0z"/></svg>');
+    --hero-main-text-size: 36;
+    --hero-sub-text-size: 18;
+    --hero-button-text-size: 16;
+
+    --above-header-text-size: 16;
+
+    --header-menu-request-button-text-size: 16;
+}
+
+body {
+    font-family: 'Open Sans';
+    font-size: calc(var(--default-font-size) * 1px);
+
+    margin: 0px;
+    padding: 0px;
+
+    color: var(--text-color-dark);
+}
+
