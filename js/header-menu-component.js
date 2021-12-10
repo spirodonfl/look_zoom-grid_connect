@@ -39,14 +39,31 @@ button:hover { cursor: pointer; }
     padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
 }
 #menu_component #mc_right {
     text-align: right;
 }
-#mobile_menu_component { display: none; }
-@media screen and (max-width: 1024px) {
-    #menu_component { display: none; }
-    #mobile_menu_component { display: block; }
+
+#menu_component {
+    --xs-display: var(--media-xs) none;
+    --sm-display: var(--media-sm) none;
+    --md-display: var(--media-md) grid;
+    --lg-display: var(--media-lg) grid;
+    display: var(--xs-display, var(--sm-display, var(--md-display, var(--lg-display))));
+}
+#mobile_menu_component {
+    --xs-display: var(--media-xs) block;
+    --sm-display: var(--media-sm) block;
+    --md-display: var(--media-md) none;
+    --lg-display: var(--media-lg) none;
+    display: var(--xs-display, var(--sm-display, var(--md-display, var(--lg-display))));
+}
+
+#mobile_menu_component {
+    padding: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 </style>
 <div id="menu_component">
@@ -67,15 +84,15 @@ button:hover { cursor: pointer; }
     </div>
 </div>
 <div id="mobile_menu_component">
-        <ul>
-            <li><button id="mcr_request_a_quote">Request a quote</button></li>
-            <li><a href="#">Products</li>
-            <li><a href="#">Protocols</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Manufacturers</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
+    <ul>
+        <li><button id="mcr_request_a_quote">Request a quote</button></li>
+        <li><a href="#">Products</li>
+        <li><a href="#">Protocols</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Manufacturers</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
 </div>
 `;
 
