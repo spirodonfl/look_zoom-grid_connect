@@ -13,8 +13,6 @@
 - Properly vertically center hero text
 - Carousel - get buttons working
 - Carousel - responsive design
-- Carousel - add logo and text and whatnot
-- Carousel - add more slides
 - Carousel - style the "title" class
 - Carousel - style the text for mobile and full
 - Carousel - Properly lay out mobile and full

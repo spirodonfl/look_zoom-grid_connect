@@ -30,10 +30,10 @@ ul {
     margin: 0px;
     padding: 0px;
 }
-#carousel_component #carousel_slides #slide_mobile { display: none; }
+#carousel_component #carousel_slides .slide_mobile { display: none; }
 @media screen and (max-width: 1024px) {
-    #carousel_component #carousel_slides #slide_full { display: none; }
-    #carousel_component #carousel_slides #slide_mobile { display: block; }
+    #carousel_component #carousel_slides .slide_full { display: none; }
+    #carousel_component #carousel_slides .slide_mobile { display: block; }
 }
 </style>
 <div id="carousel_component">
@@ -47,7 +47,7 @@ ul {
         </ul>
     </div>
     <div id="carousel_slides" style="text-align: center; background-color: var(--bg-color-dark); background-image: url(\"images/carousel-slide-1.png\")">
-        <div id="slide_full">
+        <div data-slide-id="1" class="slide_full">
             <div id="slide_left">
                 <div id="slide_left_logo"><img src="images/carousel-slide-1-logo.png" /></div>
                 <div id="slide_left_text">
@@ -65,7 +65,7 @@ ul {
                 <p>With Grid Connect development support, Moen added product control via app (iOS or Android), voice (Amazon Alexa, Apple HomeKit, Google Assistant) and in-wall panel.</p>
             </div>
         </div>
-        <div id="slide_mobile">
+        <div data-slide-id="1" class="slide_mobile">
             <div id="slide_mobile_logo"><img src="images/carousel-slide-1-logo.png" /></div>
             <div id="slide_mobile_text">
                 <p class="title">Meeting demand for smart home technology</p>
@@ -76,13 +76,83 @@ ul {
                 <p>With Grid Connect development support, Moen added product control via app (iOS or Android), voice (Amazon Alexa, Apple HomeKit, Google Assistant) and in-wall panel.</p>
             </div>
         </div>
+        <div data-slide-id="2" class="slide_full">
+            <div id="slide_left">
+                <div id="slide_left_logo"><img src="images/carousel-slide-1-logo.png" /></div>
+                <div id="slide_left_text">
+                    <div id="slide_left_text_title">SLIDE 2</div>
+                    <div id="slide_left_text_content">SLIDE 2 CONTENT</div>
+                </div>
+            </div>
+            <div id="slide_right">
+                <div id="slide_right_logo"><img src="images/carousel-slide-1-text-image.png" /></div>
+                <p class="title">Meeting demand for smart home technology</p>
+                <p>With Grid Connect development support, Moen added product control via app (iOS or Android), voice (Amazon Alexa, Apple HomeKit, Google Assistant) and in-wall panel.</p>
+                <p class="title">Enhancing product and customer experience</p>
+                <p>Grid Connect developed the software and firmware to include a dozen presets like greeting, temperature, pressure, notifications, and timer to personalize product use.</p>
+                <p class="title">Features to help customers save water and time</p>
+                <p>With Grid Connect development support, Moen added product control via app (iOS or Android), voice (Amazon Alexa, Apple HomeKit, Google Assistant) and in-wall panel.</p>
+            </div>
+        </div>
+        <div data-slide-id="2" class="slide_mobile">
+            <div id="slide_mobile_logo"><img src="images/carousel-slide-1-logo.png" /></div>
+            <div id="slide_mobile_text">
+                <p class="title">SLIDE 2 IS BETTER</p>
+                <p>With Grid Connect development support, Moen added product control via app (iOS or Android), voice (Amazon Alexa, Apple HomeKit, Google Assistant) and in-wall panel.</p>
+                <p class="title">Enhancing product and customer experience</p>
+                <p>Grid Connect developed the software and firmware to include a dozen presets like greeting, temperature, pressure, notifications, and timer to personalize product use.</p>
+                <p class="title">Features to help customers save water and time</p>
+                <p>With Grid Connect development support, Moen added product control via app (iOS or Android), voice (Amazon Alexa, Apple HomeKit, Google Assistant) and in-wall panel.</p>
+            </div>
+        </div>
     </div>
     <div id="carousel_buttons" style="text-align: center; margin-top: -30px;">
-        <img src="images/carousel-left-button.png" />
-        <img src="images/carousel-right-button.png" />
+        <img src="images/carousel-left-button.png" id="previous_button" />
+        <img src="images/carousel-right-button.png" id="next_button" />
     </div>
 </div>
 `;
+        var full_slides = this.shadow.querySelectorAll('.slide_full');
+        for (var i in full_slides) {
+            if (full_slides[i] instanceof HTMLElement) {
+                if (full_slides[i].dataset.slideId === '1') {
+                    full_slides[i].style.display = 'block';
+                } else {
+                    full_slides[i].style.display = 'none';
+                }
+            }
+        }
+        var mobile_slides = this.shadow.querySelectorAll('.slide_mobile');
+        for (var i in mobile_slides) {
+            if (mobile_slides[i] instanceof HTMLElement) {
+                if (mobile_slides[i].dataset.slideId === '1') {
+                    mobile_slides[i].style.display = 'block';
+                } else {
+                    mobile_slides[i].style.display = 'none';
+                }
+            }
+        }
+        var myself = this;
+        this.shadow.getElementById('next_button').addEventListener('click', function () {
+            for (var i in full_slides) {
+                if (full_slides[i] instanceof HTMLElement) {
+                    if (full_slides[i].dataset.slideId === '2') {
+                        full_slides[i].style.display = 'block';
+                    } else {
+                        full_slides[i].style.display = 'none';
+                    }
+                }
+            }
+            for (var i in mobile_slides) {
+                if (mobile_slides[i] instanceof HTMLElement) {
+                    if (mobile_slides[i].dataset.slideId === '2') {
+                        mobile_slides[i].style.display = 'block';
+                    } else {
+                        mobile_slides[i].style.display = 'none';
+                    }
+                }
+            }
+        });
     }
 
     static get observedAttributes() {
