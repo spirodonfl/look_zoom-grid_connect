@@ -20,8 +20,6 @@ class HeaderComponent extends HTMLElement {
 #header_component {
     padding: 20px 10px;
     display: grid;
-    grid-template-columns: 300px 1fr 200px 200px;
-    grid-template-rows: 1fr;
 }
 #header_component #hc_logo {
     text-align: center;
@@ -66,8 +64,33 @@ class HeaderComponent extends HTMLElement {
     margin-top: -28px;
     margin-left: 112px;
 }
+
+#hc_logo { grid-area: logo; }
+#hc_menu_button { grid-area: menuButton; }
+#hc_my_account { grid-area: myAccount; }
+#hc_input { grid-area: searchInput; }
+#hc_cart { grid-area: cart; }
+#hc_cart_small { grid-area: smallCart; }
+#hc_menu_button, #hc_cart_small { display: none; }
+#header_component {
+    grid-template-areas: "logo searchInput myAccount cart";
+    grid-template-columns: 300px 1fr 200px 200px;
+    grid-template-rows: 1fr;
+}
+@media screen and (max-width: 1024px) {
+    #header_component {
+        grid-template-areas: "menuButton logo smallCart" "searchInput searchInput searchInput";
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    #hc_menu_button, #hc_cart_small { display: block; }
+    #hc_cart, #hc_my_account { display: none; }
+}
 </style>
 <div id="header_component">
+    <div id="hc_menu_button">
+        <button>Menu</button>
+    </div>
     <div id="hc_logo">
         <img src="images/grid-connect-logo-full.png" width="100%" />
     </div>
@@ -76,6 +99,10 @@ class HeaderComponent extends HTMLElement {
     </div>
     <div id="hc_my_account">
         My Account <img src="images/user-circle-1.png" style="vertical-align: middle;" />
+    </div>
+    <div id="hc_cart_small">
+        <img src="images/shopping-cart-1.png" />
+        ${(this.totalCartItems > 0) ? '<div id="cart_circle"></div>' : ''}
     </div>
     <div id="hc_cart">
         Cart | ${this.totalCartItems} ${totalCartItemsText}<img src="images/shopping-cart-1.png" />
