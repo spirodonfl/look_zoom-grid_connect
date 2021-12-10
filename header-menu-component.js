@@ -43,6 +43,11 @@ button:hover { cursor: pointer; }
 #menu_component #mc_right {
     text-align: right;
 }
+#mobile_menu_component { display: none; }
+@media screen and (max-width: 1024px) {
+    #menu_component { display: none; }
+    #mobile_menu_component { display: block; }
+}
 </style>
 <div id="menu_component">
     <div id="mc_left">
@@ -60,6 +65,17 @@ button:hover { cursor: pointer; }
             <li><button id="mcr_request_a_quote">Request a quote</button></li>
         </ul>
     </div>
+</div>
+<div id="mobile_menu_component">
+        <ul>
+            <li><button id="mcr_request_a_quote">Request a quote</button></li>
+            <li><a href="#">Products</li>
+            <li><a href="#">Protocols</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Manufacturers</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
 </div>
 `;
 
