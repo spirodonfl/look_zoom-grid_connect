@@ -1,57 +1,174 @@
 <html>
     <head>
         <title>Grid Connect - Components</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
         <link rel="stylesheet" href="css/css-media-vars.css" />
         <link rel="stylesheet" href="css/main.css" />
-        <style type="text/css">
-            above-header-component { display: none; }
-            @media only screen and (min-width: 769px) {
-                above-header-component { display: block; }
-            }
-        </style>
-        <script src="js/hero-component.js"></script>
-        <script src="js/notice-component.js"></script>
-        <script src="js/above-header-component.js"></script>
-        <script src="js/header-component.js"></script>
-        <script src="js/header-menu-component.js"></script>
-        <script src="js/carousel-component.js"></script>
-        <script type="text/javascript">
-            // Example of how to attach to a click from within the web component and doing something
-            // This means you can customize each components button if you have multiples of these on a page
-            window.addEventListener('load', function () {
-                document.getElementsByTagName('hero-component')[0].addEventListener('cta-click', function (e) {
-                    console.log(e.detail.evt);
-                });
-
-                document.getElementsByTagName('notice-component')[0].addEventListener('close-clicked', function (e) {
-                    e.target.remove();
-                });
-
-                document.getElementsByTagName('header-component')[0].addEventListener('request-a-quote-clicked', function (e) {
-                    console.log(e.detail.evt);
-                });
-            });
-        </script>
+        <script src="js/carousel-vanilla.js"></script>
     </head>
     <body>
-        <notice-component>
-            <span slot="text"><strong>Notice Area!</strong> Read about the lorem ipsum dolor sid pulcher <u>right here</u></span>
-        </notice-component>
+        <div id="notice_component">
+            <div id="nc_text"><strong>Notice Area!</strong> Read about the lorem ipsum dolor sid pulcher <u>right here</u></div>
+            <div id="nc_close">X</div>
+        </div>
 
-        <above-header-component></above-header-component>
+        <div id="above_header_component">
+            <div id="ahc_telephone"><a href="tel:6302451445"><img src="images/telephone-icon.png" /> (630) 245-1445</a></div>
+            <div id="ahc_text"><span class="secondary_text_color">Free shipping*</span> on orders over $75</div>
+        </div>
 
-        <header-component total-cart-items="2"></header-component>
+        <div id="header_component">
+            <div id="hc_menu_button">
+                <button>Menu</button>
+            </div>
+            <div id="hc_logo">
+                <img src="images/grid-connect-logo-full.png" width="100%" />
+            </div>
+            <div id="hc_input">
+                <input type="text" placeholder="What are you looking for?" /> <img src="images/search-icon.png" />
+            </div>
+            <div id="hc_my_account">
+                <a href="#"><strong>My Account</strong> <img src="images/user-circle-1.png" style="vertical-align: middle;" /></a>
+            </div>
+            <div id="hc_cart_small">
+                <a href="#"><img src="images/shopping-cart-1.png" />
+                <div id="cart_circle"></div></a>
+            </div>
+            <div id="hc_cart">
+                <a href="#"><strong>Cart |</strong> <span id="hc_cart_total_number">0</span><img src="images/shopping-cart-1.png" />
+                <div id="cart_circle"></div></a>
+            </div>
+        </div>
 
-        <header-menu-component></header-menu-component>
+        <div id="menu_component">
+            <div id="mc_left">
+                <ul>
+                    <li><a href="#">Products <img src="images/menu-arrow-down.png" style="vertical-align: middle;" /></a></li>
+                    <li><a href="#">Protocols</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Manufacturers <img src="images/menu-arrow-down.png" style="vertical-align: middle;" /></a></li>
+                </ul>
+            </div>
+            <div id="mc_right">
+                <ul>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><button id="mcr_request_a_quote">Request a quote</button></li>
+                </ul>
+            </div>
+        </div>
+        <div id="mobile_menu_component">
+            <ul>
+                <li><button id="mcr_request_a_quote">Request a quote</button></li>
+                <li><a href="#">Products</li>
+                <li><a href="#">Protocols</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Manufacturers</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
 
-        <hero-component>
-            <span slot="text-one">Sample Text One</span>
-            <span slot="subtext-one">Sub sample TEXT one</span>
-            <span slot="text-cta">Call to action</span>
-            <span slot="text-two">SECOND text slot</span>
-            <span slot="text-three">THIRd TeXt SlOt</span>
-        </hero-component>
+        <div id="hero_component_wrapper">
+            <div id="hero_component">
+                <div id="hc_image_one">
+                    <div class="hc_text">
+                        <div>Sample Text One</div>
+                        <p class="hc_subtext">Sub sample TEXT one</p>
+                        <button>Call to action</button>
+                    </div>
+                </div>
+                <div id="hc_image_two">
+                    <div class="hc_text">SECOND text slot</div>
+                </div>
+                <div id="hc_image_three">
+                    <div class="hc_text">THIRd TeXt SlOt</div>
+                </div>
+            </div>
+        </div>
 
-        <carousel-component></carousel-component>
+        <div id="carousel_component">
+            <div id="carousel_title">Your custom engineering & manufacturing partner</div>
+            <div id="carousel_menu">
+                <ul>
+                    <li data-slide-id="1" class="slide-menu-item first active">Moen</li>
+                    <li data-slide-id="2" class="slide-menu-item">Rollease Acmeda</li>
+                    <li data-slide-id="3" class="slide-menu-item">Shclage</li>
+                    <li data-slide-id="4" class="slide-menu-item last">Wayne Pumps</li>
+                </ul>
+            </div>
+            <div id="carousel_slides">
+                <div data-slide-id="1" class="slide_full">
+                    <div class="slide_left">
+                        <div class="slide_left_logo"><img src="images/carousel-slide-1-logo.png" /></div>
+                        <div class="slide_left_text">
+                            <div class="slide_left_text_title">Moen partners with Grid Connect on first smart shower technology</div>
+                            <div class="slide_left_text_content">Grid Connect developed WiFi technology, device firmware, and iOS / Android apps that allowed Moen to bring their Smart Shower concept to life.</div>
+                        </div>
+                    </div>
+                    <div class="slide_right">
+                        <div class="slide_right_content">
+                            <div class="slide_right_logo"><img src="images/carousel-slide-1-text-image.png" /></div>
+                            <p class="title">Meeting demand for smart home technology</p>
+                            <p>With Grid Connect development support, Moen added product control via app (iOS or Android), voice (Amazon Alexa, Apple HomeKit, Google Assistant) and in-wall panel.</p>
+                            <p class="title">Enhancing product and customer experience</p>
+                            <p>Grid Connect developed the software and firmware to include a dozen presets like greeting, temperature, pressure, notifications, and timer to personalize product use.</p>
+                            <p class="title">Features to help customers save water and time</p>
+                            <p>With Grid Connect development support, Moen added product control via app (iOS or Android), voice (Amazon Alexa, Apple HomeKit, Google Assistant) and in-wall panel.</p>
+                        </div>
+                    </div>
+                </div>
+                <div data-slide-id="1" class="slide_mobile">
+                    <div class="slide_mobile_logo"><img src="images/carousel-slide-1-logo.png" /></div>
+                    <div class="slide_mobile_text">
+                        <div class="slide_right_content">
+                            <p class="title">Meeting demand for smart home technology</p>
+                            <p>With Grid Connect development support, Moen added product control via app (iOS or Android), voice (Amazon Alexa, Apple HomeKit, Google Assistant) and in-wall panel.</p>
+                            <p class="title">Enhancing product and customer experience</p>
+                            <p>Grid Connect developed the software and firmware to include a dozen presets like greeting, temperature, pressure, notifications, and timer to personalize product use.</p>
+                            <p class="title">Features to help customers save water and time</p>
+                            <p>With Grid Connect development support, Moen added product control via app (iOS or Android), voice (Amazon Alexa, Apple HomeKit, Google Assistant) and in-wall panel.</p>
+                        </div>
+                    </div>
+                </div>
+                <div data-slide-id="2" class="slide_full">
+                    <div class="slide_left">
+                        <div class="slide_left_logo"><img src="images/carousel-slide-1-logo.png" /></div>
+                        <div class="slide_left_text">
+                            <div class="slide_left_text_title">SLIDE 2</div>
+                            <div class="slide_left_text_content">SLIDE 2 CONTENT</div>
+                        </div>
+                    </div>
+                    <div class="slide_right">
+                        <div class="slide_right_content">
+                            <div class="slide_right_logo"><img src="images/carousel-slide-1-text-image.png" /></div>
+                            <p class="title">Meeting demand for smart home technology</p>
+                            <p>With Grid Connect development support, Moen added product control via app (iOS or Android), voice (Amazon Alexa, Apple HomeKit, Google Assistant) and in-wall panel.</p>
+                            <p class="title">Enhancing product and customer experience</p>
+                            <p>Grid Connect developed the software and firmware to include a dozen presets like greeting, temperature, pressure, notifications, and timer to personalize product use.</p>
+                            <p class="title">Features to help customers save water and time</p>
+                            <p>With Grid Connect development support, Moen added product control via app (iOS or Android), voice (Amazon Alexa, Apple HomeKit, Google Assistant) and in-wall panel.</p>
+                        </div>
+                    </div>
+                </div>
+                <div data-slide-id="2" class="slide_mobile">
+                    <div class="slide_mobile_logo"><img src="images/carousel-slide-1-logo.png" /></div>
+                    <div class="slide_mobile_text">
+                        <div class="slide_right_content">
+                            <p class="title">SLIDE 2 IS BETTER</p>
+                            <p>With Grid Connect development support, Moen added product control via app (iOS or Android), voice (Amazon Alexa, Apple HomeKit, Google Assistant) and in-wall panel.</p>
+                            <p class="title">Enhancing product and customer experience</p>
+                            <p>Grid Connect developed the software and firmware to include a dozen presets like greeting, temperature, pressure, notifications, and timer to personalize product use.</p>
+                            <p class="title">Features to help customers save water and time</p>
+                            <p>With Grid Connect development support, Moen added product control via app (iOS or Android), voice (Amazon Alexa, Apple HomeKit, Google Assistant) and in-wall panel.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="carousel_buttons" style="text-align: center; margin-top: -30px;">
+                <img src="images/carousel-left-button.png" id="previous_button" />
+                <img src="images/carousel-right-button.png" id="next_button" />
+            </div>
+        </div>
     </body>
 </html>

@@ -53,19 +53,19 @@ class HeroComponent extends HTMLElement {
             grid-template-rows: 290px 290px;
         }
     }
-    #hc_image_one {
+    #hero_component #hc_image_one {
         grid-area: imageOne;
         overflow: hidden;
 
         background: var(--hero-layer-one) no-repeat center center/cover, var(--this-hero-image-one) no-repeat center center/cover;
     }
-    #hc_image_two {
+    #hero_component #hc_image_two {
         grid-area: imageTwo;
         overflow: hidden;
 
         background: var(--hero-layer-two) no-repeat center center/cover, var(--this-hero-image-two) no-repeat center center/cover;
     }
-    #hc_image_three {
+    #hero_component #hc_image_three {
         grid-area: imageThree;
         overflow: hidden;
 

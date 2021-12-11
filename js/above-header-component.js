@@ -16,11 +16,11 @@ class AboveHeaderComponent extends HTMLElement {
     color: var(--text-color-light);
     padding: 12px;
 }
-#ahc_telephone {
+#above_header_component #ahc_telephone {
     position: absolute;
     left: 10;
 }
-a {
+#above_header_component a {
     text-decoration: none;
     color: var(--text-color-light);
     
@@ -28,16 +28,16 @@ a {
     grid-template-columns: 1fr 100px;
     align-items: center;
 }
-#ahc_telephone img {
+#above_header_component #ahc_telephone img {
     vertical-align: middle;
     margin-right: 8px;
 }
-#ahc_text {
+#above_header_component #ahc_text {
     text-align: center;
     width: 100%;
     font-size: calc(var(--above-header-text-size) * 1px);
 }
-#ahc_text .secondary_text_color {
+#above_header_component #ahc_text .secondary_text_color {
     color: var(--secondary-text-color);
 }
 </style>

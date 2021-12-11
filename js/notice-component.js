@@ -15,16 +15,16 @@ class NoticeComponent extends HTMLElement {
     background-color: var(--bg-color-light);
     padding: 7px;
 }
-#nc_text {
+#notice_component #nc_text {
     text-align: center;
     width: 100%;
 }
-#nc_close {
+#notice_component #nc_close {
     position: absolute;
     right: 10;
     margin-top: -20px;
 }
-#nc_close:hover {
+#notice_component #nc_close:hover {
     cursor: pointer;
 }
 </style>
